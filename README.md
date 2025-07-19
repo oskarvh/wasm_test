@@ -63,3 +63,9 @@ Open [`http://localhost:8000/index.html`](http://localhost:8000/index.html) in y
 
 - The build system uses a custom CMake toolchain file at `cmake/wasi-toolchain.cmake` to target `wasm32-wasi`.  
 - The setup script detects your platform and downloads the appropriate WASI SDK release.
+
+## Using native wasm without wasi
+Install clang and lld:
+- `sudo apt-get install clang`
+- `sudo apt-get install lld`
+
