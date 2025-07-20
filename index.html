@@ -1,13 +1,67 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <title>WASM Serial Demo</title>
-</head>
-<body>
-  <h1>WASM + Web Serial</h1>
-  <button id="connectBtn">Connect Serial</button>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preload" href="/build/_deps/clay-src/examples/clay-official-website/fonts/Calistoga-Regular.ttf" as="font" type="font/ttf" crossorigin>
+    <link rel="preload" href="/build/_deps/clay-src/examples/clay-official-website/fonts/Quicksand-Semibold.ttf" as="font" type="font/ttf" crossorigin>
+    <title>WASM Clay demo</title>
+    <style>
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            padding: 0;
+            margin: 0;
+            pointer-events: none;
+            background: rgb(244, 235, 230);
+        }
+        /* Import the font using @font-face */
+        @font-face {
+          font-family: 'Calistoga';
+          font-style: normal;
+          font-weight: 400;
+          src: url('/build/_deps/clay-src/examples/clay-official-website/fonts/Calistoga-Regular.ttf') format('truetype');
+        }
 
-  <script type="module" src="serial.js"></script>
+        @font-face {
+          font-family: 'Quicksand';
+          font-style: normal;
+          font-weight: 400;
+          src: url('/build/_deps/clay-src/examples/clay-official-website/fonts/Quicksand-Semibold.ttf') format('truetype');
+        }
+
+        body > canvas {
+            width: 100%;
+            height: 100%;
+            touch-action: none;
+        }
+
+        div, a, img {
+            position: absolute;
+            box-sizing: border-box;
+            -webkit-backface-visibility: hidden;
+            pointer-events: none;
+        }
+
+        a {
+            cursor: pointer;
+            pointer-events: all;
+        }
+
+        .text {
+            pointer-events: all;
+            white-space: pre;
+        }
+
+        /* TODO special exception for text selection in debug tools */
+        [id='2067877626'] > * {
+            pointer-events: none !important;
+        }
+    </style>
+</head>
+<script type="module" src="clay_module.js"></script>
+<body>
 </body>
 </html>

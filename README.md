@@ -1,15 +1,18 @@
-# Hello WASI Example
+# Hello wasm Example
 
-This project demonstrates how to build a simple "Hello, WebAssembly!" program targeting WASI using the official WASI SDK.
+This project demonstrates how to build a simple "Hello, WebAssembly!" program, compiling with native (baremetal) wasm, with a custom [clay](https://github.com/nicbarker/clay) GUI.
+
+The initial test was conducted to build the example gui, which was then changed to a custom gui.
 
 ---
 
 ## Prerequisites
 
 - **CMake** (version 3.20 or higher)
-- **curl** (for downloading the WASI SDK)
 - A POSIX-compatible shell (Linux/macOS). Windows users can use Git Bash or WSL.
 - **Python3** (for running the web server)
+- **clang** (version 18 or higher) Compiler for wasm. Install via e.g., `apt install clang`
+- **lld** (version 18 or higher) Linker to use alongside clang. Install via e.g., `apt install lld`
 
 ---
 
@@ -18,29 +21,21 @@ This project demonstrates how to build a simple "Hello, WebAssembly!" program ta
 ├── main.c
 ├── CMakeLists.txt
 ├── cmake/
-│ └── wasi-toolchain.cmake
-├── scripts/
-│ └── setup.sh
-├── external/ # Contains the downloaded WASI SDK after running setup.sh
+│ └── wasm-toolchain.cmake
 └── build/ # Build output directory
 ```
 
 ---
 ## Setup
 
-Run the setup script to download and extract the WASI SDK for your platform:
-
-```bash
-./scripts/setup.sh
-```
-This will place the WASI SDK into the external/wasi-sdk directory.
+Building the project will setup the external dependencies.
 
 ---
 ## Build
 
 Configure and build the project using CMake:
 ```bash
-cmake -B build -DCMAKE_TOOLCHAIN_FILE=cmake/wasi-toolchain.cmake
+cmake -B build -DCMAKE_TOOLCHAIN_FILE=cmake/wasm-toolchain.cmake
 cmake --build build
 ```
 The output WebAssembly binary will be:
@@ -61,11 +56,6 @@ Open [`http://localhost:8000/index.html`](http://localhost:8000/index.html) in y
 
 ## Notes
 
-- The build system uses a custom CMake toolchain file at `cmake/wasi-toolchain.cmake` to target `wasm32-wasi`.  
-- The setup script detects your platform and downloads the appropriate WASI SDK release.
-
-## Using native wasm without wasi
-Install clang and lld:
-- `sudo apt-get install clang`
-- `sudo apt-get install lld`
+- The build system uses a custom CMake toolchain file at `cmake/wasm-toolchain.cmake` to target `wasm32`.  
+- The setup script detects your platform and downloads the appropriate wasm SDK release.
 

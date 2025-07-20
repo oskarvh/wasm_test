@@ -1,6 +1,5 @@
 #define CLAY_IMPLEMENTATION
-//#include "clay.h"
-#include "build/_deps/clay-src/clay.h"
+#include "clay.h"
 
 double windowWidth = 1024, windowHeight = 768;
 float modelPageOneZRotation = 0;
@@ -495,7 +494,7 @@ CLAY_WASM_EXPORT("UpdateDrawFrame") Clay_RenderCommandArray UpdateDrawFrame(floa
     //----------------------------------------------------------------------------------
 }
 
-// Dummy main() to please cmake - TODO get wasm working with cmake on this example
+// Dummy main() to please cmake
 int main() {
     return 0;
 }

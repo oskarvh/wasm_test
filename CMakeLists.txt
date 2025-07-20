@@ -35,7 +35,7 @@ target_include_directories(gui PUBLIC
 
 add_compile_definitions(DCLAY_WASM)
 
-add_executable(index main.c)
+add_executable(index hello.c)
 
 target_link_libraries(
     index 
